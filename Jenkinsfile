@@ -5,11 +5,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh "docker-composer build"
+                sh "docker-compose up -d"
+                waitUntilServicesReady
+                echo 'Running...'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh "node index.test.js"
             }
         }
         stage('Deploy') {
