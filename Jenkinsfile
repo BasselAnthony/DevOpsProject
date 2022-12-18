@@ -1,30 +1,34 @@
 pipeline {
     agent {
-        docker {
-        image 'maven:3.8.1-adoptopenjdk-11'
-        label 'my-defined-label'
-        args  '-v /tmp:/tmp'
+        docker { image 'node:16.13.1-alpine' }
     }
-    }
-
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                echo 'Running...'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'node --version'
             }
         }
     }
+    // agent any
+
+    // stages {
+    //     stage('Build') {
+    //         steps {
+    //             echo 'Building..'
+    //             echo 'Running...'
+    //         }
+    //     }
+    //     stage('Test') {
+    //         steps {
+    //             echo 'Testing..'
+    //         }
+    //     }
+    //     stage('Deploy') {
+    //         steps {
+    //             echo 'Deploying....'
+    //         }
+    //     }
+    // }
 }
 
 // pipeline {
