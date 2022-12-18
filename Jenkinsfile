@@ -11,7 +11,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh "node index.test.js"
             }
         }
         stage('Deploy') {
