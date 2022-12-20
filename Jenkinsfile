@@ -18,18 +18,13 @@ pipeline {
         }
         stage('Docker Compose') {
             steps {
+                echo 'Building..'
                 script{
                     docker.withTool('docker') {
                     sh "docker-compose up -d"
                 }
-                }
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building..'
-
                 echo 'Running...'
+                }
             }
         }
         stage('Test') {
