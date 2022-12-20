@@ -27,6 +27,7 @@ pipeline {
                         returnStdout: true
                     ).trim()
                     sh "echo ${PATH}"
+                    sh "cp docker-compose.yml ${PATH}/docker-compose.yml"
                     sh "/usr/local/bin/docker-compose ${PAth}/docker-compose.yml up -d"
                 // }
                 echo 'Running...'
