@@ -11,6 +11,9 @@ pipeline {
                     sh "npm -v"
                 }
                 echo 'Project Cloned'
+                docker('dockerImage') {
+                    sh "docker-compose up -d"
+                }
             }
         }
         stage('Build') {
