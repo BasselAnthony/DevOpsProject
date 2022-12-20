@@ -1,6 +1,6 @@
 pipeline {
     environment {
-    docker = '/usr/local/bin/docker'
+    docker = '/usr/local/bin/docker-compose'
   }
     agent any
 
@@ -12,7 +12,7 @@ pipeline {
                 sh "whoami"
                 nodejs('npm') {
                     sh "npm install"
-                    sh 'npm test'
+                    
                 }
                 echo 'Project Cloned'
             }
@@ -20,13 +20,18 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-       
+                script{
+                    docker.withTool('docker') {
+                    sh "/usr/local/bin/docker-compose up -d"
+                }
                 echo 'Running...'
+                }
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'npm test'
             }
         }
         stage('Deploy') {
