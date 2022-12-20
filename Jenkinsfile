@@ -15,9 +15,7 @@ pipeline {
         }
         stage('Docker Compose') {
             steps {
-                dockerNode('dockerImage') {
-                    sh "docker -v"
-                }
+                sh "docker -v"
             }
         }
         stage('Build') {
