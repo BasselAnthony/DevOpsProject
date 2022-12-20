@@ -1,8 +1,10 @@
 pipeline {
-    environment {
-    docker = '/usr/local/bin/docker'
-  }
-    agent any
+    agent {
+        docker {
+            image 'maven:3.8.6-eclipse-temurin-11'
+            args '-v $HOME/.m2:/root/.m2'
+        }
+    }
 
     stages {
         stage('Cloning Git') {
