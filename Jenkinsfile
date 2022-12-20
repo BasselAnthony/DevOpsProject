@@ -12,7 +12,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'cd php/src'
             }
         }
         stage('Deploy') {
@@ -20,17 +19,17 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        // stage('Cloning Git') {
-        //     steps {
-        //         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BasselAnthony/DevOpsProject.git']]])  
-        //         sh "ls "
-        //         sh "whoami"
-        //         nodejs('npm') {
-        //             sh "npm -v"
-        //         }
-        //         echo 'Project Cloned'
-        //     }
-        // }
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BasselAnthony/DevOpsProject.git']]])  
+                sh "ls "
+                sh "whoami"
+                nodejs('npm') {
+                    sh "npm -v"
+                }
+                echo 'Project Cloned'
+            }
+        }
     }
 }
 
