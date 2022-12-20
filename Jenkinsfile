@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'cd php/src'
-                sh 'node index.test.js'
+                sh 'npm test'
             }
         }
         stage('Deploy') {
