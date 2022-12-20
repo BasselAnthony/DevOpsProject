@@ -26,7 +26,7 @@ pipeline {
                         script: 'pwd',
                         returnStdout: true
                     ).trim()
-                    sh "echo ${PAth}"
+                    sh "echo ${PATH}"
                     sh "/usr/local/bin/docker-compose ${PAth}/docker-compose.yml up -d"
                 // }
                 echo 'Running...'
