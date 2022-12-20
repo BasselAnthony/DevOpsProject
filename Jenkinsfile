@@ -16,7 +16,7 @@ pipeline {
                 echo 'Project Cloned'
             }
         }
-        stage('Docker Compose') {
+        stage('Docker Build') {
             steps {
                 echo 'Building..'
                 script{
