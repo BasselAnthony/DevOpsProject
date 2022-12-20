@@ -18,7 +18,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
         ports:
-            - 9906:3306
+            - 9906:80
     phpmyadmin:
         image: arm64v8/phpmyadmin
         ports:
@@ -28,6 +28,16 @@ services:
           PMA_HOST: db
         depends_on:
           - db
+    # jenkins:
+    #   image: jenkins/jenkins:lts
+    #   user: root
+    #   ports:
+    #    - 8081:80
+    #   container_name: jenkins
+    #   volumes:
+    #     - ~/jenkins:/var/jenkins_home
+    #     - /var/run/docker.sock:/var/run/docker.sock
+    #     - /usr/local/bin/docker:/usr/local/bin/docker
     # nodejs:
     #     build: .
     #     command: node index.js

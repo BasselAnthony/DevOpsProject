@@ -5,12 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+
                 echo 'Running...'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'cd php/src'
+                sh 'node index.test.js'
             }
         }
         stage('Deploy') {
