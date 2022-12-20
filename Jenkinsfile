@@ -12,15 +12,19 @@ pipeline {
                 sh "whoami"
                 nodejs('npm') {
                     sh "npm install"
-                    sh "npm install -g docker"
+                    
                 }
+                sh 'docker ps -a'
                 echo 'Project Cloned'
             }
         }
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-                sh "docker -v"
+                script{
+                    docker.withTool('docker') {
+                    sh "docker-compose up -d"
+                }
                 echo 'Running...'
                 }
             }
