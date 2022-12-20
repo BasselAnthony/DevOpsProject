@@ -20,8 +20,12 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-                echo 'Running...'
+                script{
+                    docker.withTool('docker') {
+                    sh "docker-compose up -d"
                 }
+                }
+                echo 'Running...'
             }
         }
         stage('Test') {
