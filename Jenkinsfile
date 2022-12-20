@@ -1,10 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.6-eclipse-temurin-11'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
+    environment {
+    docker = '/usr/local/bin/docker'
+  }
+    agent any
 
     stages {
         stage('Cloning Git') {
@@ -13,7 +11,7 @@ pipeline {
                 sh "ls "
                 sh "whoami"
                 nodejs('npm') {
-                    sh "npm -v"
+                    sh "npm install"
                 }
                 echo 'Project Cloned'
             }
