@@ -21,10 +21,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-                // script{
-                //     docker.withTool('docker') {
-                //     sh "docker-compose up -d"
-                // }
+
                 echo 'Running...'
                 }
             }
