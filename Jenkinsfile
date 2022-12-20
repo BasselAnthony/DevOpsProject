@@ -38,7 +38,7 @@ pipeline {
             }
         }
     }
-}
+
 
 // pipeline {
 //     agent { node { label 'swarm-ci' } }
