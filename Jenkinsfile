@@ -18,8 +18,10 @@ pipeline {
         }
         stage('Docker Compose') {
             steps {
-                docker.withTool('docker') {
-                    sh "docker-compose up -d"
+                script{
+                    docker.withTool('docker') {
+                        sh "docker-compose up -d"
+                    }
                 }
             }
         }
