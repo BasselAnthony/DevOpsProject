@@ -21,9 +21,14 @@ pipeline {
             steps {
                 echo 'Building..'
                 script{
-                    docker.withTool('docker') {
-                    sh "/usr/local/bin/docker-compose up -d"
-                }
+                    // docker.withTool('docker') {
+                    PAth = sh (
+                        script: 'pwd',
+                        returnStdout: true
+                    ).trim()
+                    sh "echo ${PAth}"
+                    sh "/usr/local/bin/docker-compose ${PAth}/up -d"
+                // }
                 echo 'Running...'
                 }
             }
