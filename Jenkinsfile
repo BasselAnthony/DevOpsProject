@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+    docker = '/usr/local/bin/docker'
+  }
     agent any
 
     stages {
@@ -15,7 +18,7 @@ pipeline {
         }
         stage('Docker Compose') {
             steps {
-                sh "docker-compose up -d"
+                sh "docker -v"
             }
         }
         stage('Build') {
