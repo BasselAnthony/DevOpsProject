@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script{
                     docker.withTool('docker') {
-                        sh "docker-compose up -d"
+                        sh "docker -v"
                     }
                 }
             }
