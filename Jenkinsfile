@@ -21,10 +21,10 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-                script{
-                    docker.withTool('docker') {
-                    sh "docker-compose up -d"
-                }
+                // script{
+                //     docker.withTool('docker') {
+                //     sh "docker-compose up -d"
+                // }
                 echo 'Running...'
                 }
             }
@@ -32,6 +32,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'npm test'
             }
         }
         stage('Deploy') {
