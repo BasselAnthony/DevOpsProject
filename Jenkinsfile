@@ -12,6 +12,7 @@ pipeline {
                 sh "whoami"
                 nodejs('npm') {
                     sh "npm install"
+                    sh "npm install -g docker"
                 }
                 echo 'Project Cloned'
             }
@@ -21,7 +22,6 @@ pipeline {
                 echo 'Building..'
                 script{
                     docker.withTool('docker') {
-                    sh "brew install docker" 
                     sh "docker-compose up -d"
                 }
                 echo 'Running...'
