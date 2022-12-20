@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-    tools {nodejs "nodejs"}
+    nodejs('<name of your Node installation>'){
+        npm install
+        npm run test
+    }
 
     stages {
         stage('Build') {
@@ -15,7 +18,6 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'cd php/src'
-                sh 'npm test'
             }
         }
         stage('Deploy') {
