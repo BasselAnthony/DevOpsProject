@@ -18,7 +18,9 @@ pipeline {
         }
         stage('Docker Compose') {
             steps {
-                sh "docker -v"
+                docker.withTool('docker') {
+                    sh "docker-compose up -d"
+                }
             }
         }
         stage('Build') {
