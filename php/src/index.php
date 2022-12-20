@@ -34,7 +34,7 @@ if ($conn->connect_error) {
             echo "<br>";
         }
     }
-      
+      return $message->message;
       mysqli_close($conn);
 }
 ?>

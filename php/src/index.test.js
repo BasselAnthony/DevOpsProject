@@ -2,7 +2,7 @@ const request = require('request');
 
   it('should return "hello world" when calling the PHP URL', function(done) {
     request('/http://localhost:8000/', function(error, response, body) {
-      expect('Hello World').toMatch('Hello World');
+      expect(response).toMatch('Hello World');
       done();
     });
   });

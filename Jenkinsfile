@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    nodejs('<name of your Node installation>'){
-        npm install
-        npm run test
-    }
-
     stages {
         stage('Build') {
             steps {
