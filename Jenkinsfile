@@ -21,6 +21,7 @@ pipeline {
                 echo 'Building..'
                 script{
                     docker.withTool('docker') {
+                    sh "brew install docker" 
                     sh "docker-compose up -d"
                 }
                 echo 'Running...'
