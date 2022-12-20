@@ -20,10 +20,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building..'
-                script{
-                    docker.withTool('docker') {
-                    sh "docker -v"
-                }
+                sh "docker -v"
                 echo 'Running...'
                 }
             }
