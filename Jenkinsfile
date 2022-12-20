@@ -1,6 +1,6 @@
 pipeline {
     environment {
-    docker-compose = '/usr/local/bin/docker-compose'
+    docker = '/usr/local/bin/docker'
   }
     agent any
 
@@ -19,9 +19,9 @@ pipeline {
         stage('Docker Compose') {
             steps {
                 script{
-                    docker.withTool('docker-compose') {
-                        sh "docker-compose up -d"
-                    }
+                    docker.withTool('docker') {
+                    sh "docker-compose up -d"
+                }
                 }
             }
         }
