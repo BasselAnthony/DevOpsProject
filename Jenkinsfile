@@ -22,7 +22,7 @@ pipeline {
                 echo 'Building..'
                 script{
                     docker.withTool('docker') {
-                    sh "docker-compose up -d"
+                    sh "docker -v"
                 }
                 echo 'Running...'
                 }
