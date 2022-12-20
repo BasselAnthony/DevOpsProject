@@ -12,7 +12,7 @@ pipeline {
                 sh "whoami"
                 nodejs('npm') {
                     sh "npm install"
-                    
+                    sh 'npm test'
                 }
                 echo 'Project Cloned'
             }
@@ -27,9 +27,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                nodejs('npm') {
-                    sh 'npm test'
-                }
             }
         }
         stage('Deploy') {
