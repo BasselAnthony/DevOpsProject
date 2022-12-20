@@ -11,6 +11,10 @@ pipeline {
                     sh "npm -v"
                 }
                 echo 'Project Cloned'
+            }
+        }
+        stage('Docker Compose') {
+            steps {
                 dockerNode('dockerImage') {
                     sh "docker -v"
                 }
