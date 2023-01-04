@@ -1,33 +1,10 @@
 version: '3.8'
 services:
-    php-apache-environment:
-        container_name: php-apache
-        build:
-            context: ./php
-            dockerfile: ./php/Dockerfile
-        depends_on:
-            - db
-        volumes:
-            - ./php/src:/var/www/html/
+    php-project:
+        container_name: php-project
+        image: php-project:1
         ports:
-            - 8000:80
-    db:
-        container_name: db
-        image: mysql
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-        ports:
-            - 9906:80
-    phpmyadmin:
-        image: arm64v8/phpmyadmin
-        ports:
-           - '8080:80'
-        restart: always
-        environment:
-          PMA_HOST: db
-        depends_on:
-          - db
+            - 80:80
     # jenkins:
     #   image: jenkins/jenkins:lts
     #   user: root
@@ -48,72 +25,4 @@ services:
     #       - 3000:3000
     #     depends_on:
     #       - db
-
-
-
-
-
-# version: '3'
-# services:
-#   db:
-#     container_name: db
-#     image: mysql:latest
-#     restart: always
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#   php-apache-environment:
-#         container_name: php-apache
-#         build:
-#             context: ./php
-#             dockerfile: Dockerfile
-#         depends_on:
-#             - db
-#         volumes:
-#             - ./php/src:/var/www/html/
-#         ports:
-#             - 8000:80
-
-
-# version: '3'
-# services:
-#   db:
-#     container_name: db
-#     image: mysql:latest
-#     restart: always
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#   php-apache-environment:
-#         container_name: php-apache
-#         build:
-#             context: ./php
-#             dockerfile: Dockerfile
-#         depends_on:
-#             - db
-#         volumes:
-#             - ./php/src:/var/www/html/
-#         ports:
-#             - 8000:80
-
-
-# # version: '3'
-# # services:
-# #   db:
-# #     container_name: db
-# #     image: mysql:latest
-# #     restart: always
-# #     environment:
-# #       MYSQL_ROOT_PASSWORD: root
-# #     ports:
-# #         - "9906:3306"
-# #   php-apache-environment:
-# #         container_name: php-apache
-# #         build:
-# #             context: ./php
-# #             dockerfile: Dockerfile
-# #         depends_on:
-# #             - db
-# #         volumes:
-# #             - ./php/src:/var/www/html/
-# #         ports:
-# #             - 8000:80
 
